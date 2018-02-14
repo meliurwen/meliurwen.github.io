@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <!-- Basics -->
+    <meta charset="utf-8">
+    <meta name="robots" content="index,follow">
+
+    <title>Meliurwen's Personal Page</title>
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+</head>
+
+<body>
+    <!--  Content  -->
+    <article>
+        <h1>Meliurwen N.<br /> <span id="subtitle">Available on <a href="https://github.com/meliurwen" target="_blank">Github</a>, coding for fun and uni projects.</span></h1>
+    </article>
+
+    <!--  Player Audio  -->
+    <div style="display:table;position: absolute; right: 0; bottom: 0;margin:10px;" id="dummy">
+        <div id="songName" style="display:table-cell;vertical-align:middle">Clau M.& Nect<br />House of Dreams</div>
+        <img style="float:right" src="img/play.png" name="Bottom-1" width="30" height="30" border="0" onclick="playSound(this, 'audio/Clau _M_Nect_-_House_Of_Dreams.mp3');diffImage(this);" />
+    </div>
+
+    <!--  Tape Credits  -->
+    <div style="display:table;position: absolute; left: 0; bottom: 0;margin:10px;" id="dummyTape">
+        <a href="https://vimeo.com/193542635"><img id="tapeImage" target="_blank" style="float:left" src="img/tape.png" name="Bottom-1" width="30" height="30" border="0"></a>
+        <div id="tape" style=";display:table-cell;vertical-align:middle"><a id="tape" href="https://vimeo.com/193542635" target="_blank">Beeple<br>BEAMMM (loop)</a></div>
+    </div>
+
+    <!--  Video is muted & autoplays  -->
+    <video autoplay loop id="video-background" muted plays-inline poster="img/beammm_thumbnail.jpg">
+        <source src="video/beammm_loop.mp4">
+    </video>
+    <script>
+        function playSound(el, soundfile) {
+            if (el.mp3) {
+                if (el.mp3.paused) el.mp3.play();
+                else el.mp3.pause();
+            } else {
+                el.mp3 = new Audio(soundfile);
+                el.mp3.play();
+            }
+        }
+
+        function diffImage(img) {
+            if (img.src.match(/pause/)) {
+                console.log('play');
+                img.src = "img/play.png";
+            } else {
+                console.log('pause');
+                img.src = "img/pause.png";
+            }
+        }
+    </script>
+</body>
+
+</html>
