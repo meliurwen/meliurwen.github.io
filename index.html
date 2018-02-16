@@ -18,7 +18,12 @@
     <!--  Player Audio  -->
     <div style="display:table;position: absolute; right: 0; bottom: 0;margin:10px;" id="dummy">
         <div id="songName" style="display:table-cell;vertical-align:middle">Clau M.& Nect<br />House of Dreams</div>
-        <img style="float:right" src="img/play.png" name="Bottom-1" width="30" height="30" border="0" onclick="playSound(this, 'audio/Clau _M_Nect_-_House_Of_Dreams.mp3');diffImage(this);" />
+        <img id="audioButton" style="float:right" src="img/play.png" name="Bottom-1" width="30" height="30" border="0" />
+        <audio id="audioSource" preload="none">
+            <source src="audio/Clau _M_Nect_-_House_Of_Dreams.ogg" type="audio/ogg">
+            <source src="audio/Clau _M_Nect_-_House_Of_Dreams.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
 
     <!--  Tape Credits  -->
@@ -29,27 +34,28 @@
 
     <!--  Video is muted & autoplays  -->
     <video autoplay loop id="video-background" muted plays-inline poster="img/beammm_thumbnail.jpg">
-        <source src="video/beammm_loop.mp4">
+        <source src="video/beammm_loop.webm" type="video/webm">
+        <source src="video/beammm_loop.mp4" type="video/mp4">
     </video>
+
     <script>
-        function playSound(el, soundfile) {
-            if (el.mp3) {
-                if (el.mp3.paused) el.mp3.play();
-                else el.mp3.pause();
-            } else {
-                el.mp3 = new Audio(soundfile);
-                el.mp3.play();
+        audioButton = document.getElementById("audioButton")
+        audioSource = document.getElementById("audioSource")
+        audioButton.onclick = function() {audioButtonClick(audioButton, audioSource)};
+
+        function audioButtonClick(audioButton, audioSource) {
+            if (audioSource.paused) {
+                audioSource.play();
+                audioButton.src = "img/pause.png";
+            }
+            else {
+                audioSource.pause();
+                audioButton.src = "img/play.png";
             }
         }
 
-        function diffImage(img) {
-            if (img.src.match(/pause/)) {
-                console.log('play');
-                img.src = "img/play.png";
-            } else {
-                console.log('pause');
-                img.src = "img/pause.png";
-            }
+        audioSource.onended = function() {
+            audioButton.src = "img/repeat.png";
         }
     </script>
 </body>

@@ -94,15 +94,11 @@ h1 span a {
 }
 
 #tapeImage {
-    opacity: 0;
+    opacity: 0.03;
     transition: 1s;
 }
 
-#dummyTape:hover #tape {
-    opacity: 1;
-}
-
-#dummyTape:hover #tapeImage {
+#dummyTape:hover #tape, #dummyTape:hover #tapeImage {
     opacity: 1;
 }
 
