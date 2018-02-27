@@ -29,7 +29,7 @@ body {
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: -100;
+    z-index: -1;
     overflow: hidden;
     /*Blur Effect on the background video*/
     -webkit-filter: blur(5px);
@@ -40,39 +40,23 @@ body {
 }
 
 
-/* These just style the content */
-
 article {
-    /* just a fancy border */
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    /* border: 10px solid rgba(255, 255, 255, 0.5);
-     margin: 10px;
-     */
 }
 
 h1 {
-    position: absolute;
-    top: 15%;
-    width: 100%;
     letter-spacing: 3px;
     color: #fff;
-    text-align: center;
     font-family: 'Brotherhood-Script', 'Jenna Sue', 'Latin Modern Mono';
     font-weight: normal;
     font-size: 150px;
 }
 
 h1 span {
-    /* font-family: sans-serif;
-     letter-spacing: 0;
-     font-weight: 300;
-     font-size: 16px;
-     line-height: 24px;
-     */
     font-family: 'Wishing-Well', 'Daniel', 'Purisa';
     letter-spacing: 0;
     font-weight: 300;
@@ -84,6 +68,13 @@ h1 span a {
     color: #fff;
 }
 
+#arrowDown {
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    text-align: center;
+}
+
 #tape {
     font-family: 'Purisa', 'Latin Modern Mono', 'Arial';
     font-size: 11px;
@@ -91,11 +82,33 @@ h1 span a {
     color: #fff;
     opacity: 0;
     transition: 1s;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 #tapeImage {
     opacity: 0.03;
     transition: 1s;
+    float: left;
+    width: 30px;
+    height: 30px;
+    border: 0;
+}
+
+.widgets {
+    display: table;
+    position: absolute;
+    bottom: 0;
+    margin: 10px;
+    z-index: 20;
+}
+
+#playerAudio.widgets {
+    right: 0;
+}
+
+#dummyTape.widgets {
+    left: 0;
 }
 
 #dummyTape:hover #tape, #dummyTape:hover #tapeImage {
@@ -109,15 +122,122 @@ h1 span a {
     color: #fff;
     opacity: 0;
     transition: 1s;
+    display:table-cell;
+    vertical-align:middle;
 }
 
-#songName,
-#tape a {
+#songName, #tape a {
     text-decoration: none;
     color: white;
     opacity: 0;
 }
 
-#dummy:hover #songName {
+#playerAudio:hover #songName {
     opacity: 1;
+}
+
+#audioButton {
+    float:right;
+    width: 30px;
+    height: 30px;
+    border: 0;
+}
+
+span.typewriter {
+    white-space: pre-wrap;
+    margin-right: -6px;
+}
+
+span.caret {
+    background: #777;
+}
+
+/*Base Mobile Layout*/
+div.terminal, div.terminal a {
+    width: 90%;
+    margin: 0 auto;
+    font-family:courier,fixed;
+    font-size: 13px;
+    color:#fff;
+}
+
+#tab-left, #tab-right, #tab-bottom {
+    width: 100%;
+    float: left;
+}
+
+
+/*2 Column Layout*/
+@media only screen and (min-width: 1024px) {
+    .terminal {
+        width: 1024px;
+        margin: 0 auto;
+        overflow: hidden;
+        height: 95vh;
+    }
+
+    #tab-left {
+        width: 50%;
+        float: left;
+        height: 92vh;
+        overflow: auto;
+    }
+
+    #tab-right {
+        width: 50%;
+        float: left;
+        height: 92vh;
+        overflow: auto;
+    }
+
+    #tab-bottom {
+        width: 100%;
+        float: bottom;
+        height: 3vh;
+        overflow: hidden;
+    }
+}
+
+/* TODO: Check if "@media only screen and" is still necessary*/
+/*Wide Layout*/
+@media only screen and (min-width: 1200px) {
+    .terminal {
+        width: 1140px;
+        margin: 0 auto;
+        overflow: hidden;
+        height: 100vh;
+    }
+}
+
+img.pixelated {
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;                 /* Chrome */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+
+    image-rendering: pixelated;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    vertical-align: middle;
+}
+
+#homeButton.pixelated {
+    width: 140px;
+    height: 70px;
+}
+
+#propic.pixelated {
+    width: 325px;
+    height: 325px;
+}
+
+.tab-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -7,18 +7,47 @@
 
     <title>Meliurwen's Personal Page</title>
     <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <script type="text/javascript" src="js/typewriter-bundle.min.js"></script>
 </head>
 
 <body>
+<div id="box-2" style="postion: absolute; z-index: 10; opacity: 1">
     <!--  Content  -->
     <article>
+<div id="arrowDown">
         <h1>Meliurwen N.<br /> <span id="subtitle">Available on <a href="https://github.com/meliurwen" target="_blank">Github</a>, coding for fun and uni projects.</span></h1>
+        <img src="img/arrow_down.png" width="70" height="70" border="0" onclick="fade(10);"/></div>
     </article>
 
+    <!--  Video is muted & autoplays  -->
+    <video autoplay loop id="video-background" muted plays-inline poster="img/beammm_thumbnail.jpg">
+        <source src="video/beammm_loop.webm" type="video/webm">
+        <source src="video/beammm_loop.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div id="box-1" style="position: absolute; z-index: -5;margin: 0 auto;width:100%; opacity: 0;">
+    <div class="terminal">
+        <div id="tab-left" style="background:red">
+            <span id="typewriter-left" class="typewriter"></span>
+            <span class="caret">&nbsp;</span>
+        </div>
+        <div id="tab-right" style="background:blue;">
+            <span id="typewriter-right" class="typewriter"></span>
+            <span class="caret">&nbsp;</span>
+        </div>
+        <div id="tab-bottom" style='background:green;'>
+            <span style="float:left;margin-left:10px">[web-portfolio_0:bash*</span>
+            <span style="float:right;margin-right:10px">"meliurwen-web-server.remotedatacenter" 10:53 20-Feb-18</span>
+        </div>
+    </div>
+</div>
+
+
     <!--  Player Audio  -->
-    <div style="display:table;position: absolute; right: 0; bottom: 0;margin:10px;" id="dummy">
-        <div id="songName" style="display:table-cell;vertical-align:middle">Clau M.& Nect<br />House of Dreams</div>
-        <img id="audioButton" style="float:right" src="img/play.png" name="Bottom-1" width="30" height="30" border="0" />
+    <div id="playerAudio" class="widgets">
+        <div id="songName">Clau M.& Nect<br />House of Dreams</div>
+        <img id="audioButton" src="img/play.png"/>
         <audio id="audioSource" preload="none">
             <source src="audio/Clau _M_Nect_-_House_Of_Dreams.ogg" type="audio/ogg">
             <source src="audio/Clau _M_Nect_-_House_Of_Dreams.mp3" type="audio/mpeg">
@@ -27,23 +56,17 @@
     </div>
 
     <!--  Tape Credits  -->
-    <div style="display:table;position: absolute; left: 0; bottom: 0;margin:10px;" id="dummyTape">
-        <a href="https://vimeo.com/193542635"><img id="tapeImage" target="_blank" style="float:left" src="img/tape.png" name="Bottom-1" width="30" height="30" border="0"></a>
-        <div id="tape" style=";display:table-cell;vertical-align:middle"><a id="tape" href="https://vimeo.com/193542635" target="_blank">Beeple<br>BEAMMM (loop)</a></div>
+    <div id="dummyTape" class="widgets">
+        <a href="https://vimeo.com/193542635"><img id="tapeImage" target="_blank" src="img/tape.png"></a>
+        <div id="tape"><a id="tape" href="https://vimeo.com/193542635" target="_blank">Beeple<br>BEAMMM (loop)</a></div>
     </div>
 
-    <!--  Video is muted & autoplays  -->
-    <video autoplay loop id="video-background" muted plays-inline poster="img/beammm_thumbnail.jpg">
-        <source src="video/beammm_loop.webm" type="video/webm">
-        <source src="video/beammm_loop.mp4" type="video/mp4">
-    </video>
-
     <script>
+
         audioButton = document.getElementById("audioButton")
         audioSource = document.getElementById("audioSource")
-        audioButton.onclick = function() {audioButtonClick(audioButton, audioSource)};
 
-        function audioButtonClick(audioButton, audioSource) {
+        audioButton.onclick = function() {
             if (audioSource.paused) {
                 audioSource.play();
                 audioButton.src = "img/pause.png";
@@ -52,11 +75,195 @@
                 audioSource.pause();
                 audioButton.src = "img/play.png";
             }
-        }
+        };
 
         audioSource.onended = function() {
             audioButton.src = "img/repeat.png";
         }
+
+
+        var box1 = document.getElementById('box-1');
+        var box2 = document.getElementById('box-2');
+
+        var a = box1.innerHTML;
+        var b;
+        var temp = 0;
+
+        var firstTime = true;
+        var endedTyping = false;
+
+        function fade(speed) {
+            if(box2.style.opacity >= 0.5) {
+                box1.style.opacity = 0;
+                box2.style.opacity = 1;
+                fadeMode = "out";
+            } else {
+                box1.style.opacity = 1;
+                box2.style.opacity = 0;
+                fadeMode = "in";
+            }
+            if (a != null) {
+                box1.innerHTML = a;
+            }
+            temp = 0;
+            interval = setInterval(function (){intervalFunction(interval, fadeMode)}, speed);
+        }
+
+        function intervalFunction(interval, fadeMode) {
+            if(fadeMode == "out") {
+                box1.style.opacity = temp;
+                box2.style.opacity = 1 - temp;
+                if(box2.style.opacity <= 0 || box1.style.opacity >= 1) {
+                    clearInterval(interval);
+                    zAxysTemp = box1.style["zIndex"];
+                    box1.style["zIndex"] = box2.style["zIndex"];
+                    box2.style["zIndex"] = zAxysTemp;
+                    b = box2.innerHTML;
+                    box2.innerHTML = "";
+                    box1.innerHTML = a;
+                    if (firstTime || !endedTyping) {
+                        firstTime = false;
+		        writeStuff();
+                    }
+                }
+            } else if (fadeMode == "in") {
+                box1.style.opacity = 1 - temp;
+                box2.style.opacity = temp;
+                if(box2.style.opacity >= 1) {
+                    clearInterval(interval);
+                    zAxysTemp = box1.style["zIndex"];
+                    box1.style["zIndex"] = box2.style["zIndex"];
+                    box2.style["zIndex"] = zAxysTemp;
+                    a = box1.innerHTML;
+                    box1.innerHTML = "";
+                }
+            }
+            temp += 0.1;
+        }
+
+    function homeButtonPress() {
+        homeButton = document.getElementById('homeButton');
+        clearInterval(interval);
+        homeButton.src = 'img/home_pressed.png';
+        setTimeout(function() {
+            homeButton.src = 'img/home.png';
+            if (endedTyping) {
+                a = box1.innerHTML;
+            }
+            box2.innerHTML = b;
+            fade(10);
+        },250);
+    }
+
+function writeStuff() {
+    var typewriter = require('typewriter');
+
+    var twSpanLeft = document.getElementById('typewriter-left');
+    var twSpanRight = document.getElementById('typewriter-right');
+
+    var twLeft = typewriter(twSpanLeft).withAccuracy(95)
+                                    .withMinimumSpeed(5)
+                                    .withMaximumSpeed(17)
+                                    .build();
+
+    var twRight = typewriter(twSpanRight).withAccuracy(95)
+                                    .withMinimumSpeed(5)
+                                    .withMaximumSpeed(17)
+                                    .build();
+
+  twLeft.put('elementary OS Loki meliurwen-web-server tty1<br>\
+meliurwen-web-server login: ')
+    .waitRange(500, 1000)
+    .type('guest')
+    .put('<br>')
+    .waitRange(500, 1000)
+    .put('Password:<br>')
+    .waitRange(500, 1000)
+    .put('Last login bla bla bla<br>\
+Welcome to elementary OS  Loki bla bla<br>\
+<br>\
+     * Website: https://meliurwen.tk<br>\
+<br>\
+0 packages have to be updated<br>\
+0 security updates<br>\
+guest@meliurwen-web-server:~$ ')
+    .waitRange(500, 1000)
+    .type('tmux')
+    .put('<br>', function () {document.getElementById('typewriter-left').innerHTML = "";
+
+  twRight.put('guest@meliurwen-web-server:~$ ')
+    .wait(1000)
+    .type('./menu.sh')
+    .put('<br/>', function () {tabRight = document.getElementById('tab-right');tabRight.className = "tab-center";tabRight.innerHTML = "<div><img id='homeButton' class='pixelated' src='img/home.png' onclick='homeButtonPress();'><img id='propic' class='pixelated' src='img/propic.png'></div>";});
+
+});
+
+  twLeft.put('guest@meliurwen-web-server:~$ ')
+    .wait(3500)
+    .type('ssh guest@192.168.1.1')
+    .put('<br/>')
+    .waitRange(1000, 1500)
+    .put("guest@192.168.1.1\'s password:<br />")
+    .waitRange(2000, 3500)
+    .put('Linux 4.9.0-4-amd64 #1 SMP Debian 4.9.51-1 (2017-09-28) x86_64<br />')
+.put(' _    _      _<br />\
+| |  | |    | |<br />\
+| |  | | ___| | ___ ___  _ __ ___   ___<br />\
+| |/\\| |/ _ \\ |/ __/ _ \\| \'_ ` _ \\ / _ \\<br />\
+\\  /\\  /  __/ | (_| (_) | | | | | |  __/<br />\
+ \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|<br />\
+Last login: Thu Feb 15 20:54:55 2018 from 192.168.1.2<br />')
+    .put('guest@192.168.1.1:~$ ')
+    .waitRange(100, 2000)
+    .type('ls -a')
+    .put('<br/>')
+    .waitRange(250, 350)
+    .put('.   ..   Documents   Pictures   www   .superSecretStuff')
+    .put('<br />')
+    .put('guest@192.168.1.1:~$ ')
+    .wait(1500)
+    .type('ls -a D')
+    .wait(300)
+    .put('ocuments/')
+    .put('<br />')
+    .waitRange(250, 350)
+    .put('.   ..   portfolio.txt')
+    .put('<br />')
+    .put('guest@192.168.1.1:~$ ')
+    .wait(2500)
+    .type('cat D')
+    .put('ocuments/')
+    .wait(600)
+    .put('portfolio.txt')
+    .put('<br />')
+    .wait(1000)
+    .put('Photo: ../Picutures/propic.png<br>\
+Name: Meliurwen N.<br>\
+Living in:  Milan, Italy<br>\
+Actual occupation: Student<br>\
+Fields of study: Computer Science (undergraduate)<br>\
+                 Industrial Engineer spec. in Metallurgy<br>\
+<br>\
+[Languages]<br>\
+Italian - native<br>\
+English - B2<br>\
+French  - B1<br>\
+Spanish - A2<br>\
+<br>\
+[Programming&Markup Languages]<br>\
+Java, Python 3.X, PHP, Javascript, HTML, CSS, SQL, C, R<br>\
+<br>\
+[Contacts and Socials]<br>\
+Email: meliurwen@gmail.com<br>\
+Github: <a href="https://github.com/meliurwen">github.com/meliurwen</a> (Projects)<br>\
+Steam: <a href="https://steamcommunity.com/id/meliurwen">steamcommunity.com/id/meliurwen</a> (gaming)')
+    .put('<br />')
+    .put('guest@192.168.1.1:~$ ', function () {setTypingVar();});
+}
+
+function setTypingVar(){
+    endedTyping = true;
+}
     </script>
 </body>
 
