@@ -26,19 +26,63 @@
     </video>
 </div>
 
-<div id="box-1" style="position: absolute; z-index: -5;margin: 0 auto;width:100%; opacity: 0;">
+<div id="box-1" class="tab-center" style="position: absolute; z-index: -5;width:100%; opacity: 0;">
     <div class="terminal">
-        <div id="tab-left" style="background:red">
-            <span id="typewriter-left" class="typewriter"></span>
-            <span class="caret">&nbsp;</span>
+        <div id="titlebar">
+            <div style="width:33.33%;float:left;">
+                <div  class="tab-center" style="height:33px;width:33px;float:left;color:#b3b3b3;">
+                    <span class="e-icon-close"></span>
+                </div>
+            </div>
+            <div style="width:33.33%;float:left;">
+                <div class="tab-center" style="height:33px;color:#b3b3b3;font-weight: 800;">
+                    Terminal
+                </div>
+            </div>
+            <div style="width:33.33%;float:left;">
+                <div  class="tab-center" style="height:33px;width:33px;float:right;color:#b3b3b3;">
+                    <span class="e-icon-fullscreen"></span>
+                </div>
+                <div  class="tab-center" style="height:33px;width:40px;float:right;color:#b3b3b3;">
+                    <span class="e-icon-search"></span>
+                </div>
+            </div>
         </div>
-        <div id="tab-right" style="background:blue;">
-            <span id="typewriter-right" class="typewriter"></span>
-            <span class="caret">&nbsp;</span>
+        <div id="navbar">
+            <div style="float:left;">
+                <div class="tab-center" style="height:30px;width:30px;float:left;color:#b3b3b3;">
+                    <span class="e-icon-plus"></span>
+                </div>
+                <div style="height:30px;width:180px;float:left;color:#b3b3b3;border: 1px solid #232323;border-top-left-radius:4px;border-top-right-radius:4px;height:100%">
+                    <div class="tab-center" style="width:30px;height:30px;float:left;">
+                        <span class="e-icon-close"></span>
+                    </div>
+                    <div class="tab-center" style="width:178px;height:30px;float:left;position:absolute;">
+                        <span>Start</span>
+                    </div>
+                </div>
+            </div>
+            <div style="float:right;">
+                <div style="padding-top:8px;float:right;color:#b3b3b3;">
+                    <span class="e-icon-recent" style="padding-right:8px;"></span>
+                </div>
+            </div>
         </div>
-        <div id="tab-bottom" style='background:green;'>
-            <span style="float:left;margin-left:10px">[web-portfolio_0:bash*</span>
-            <span style="float:right;margin-right:10px">"meliurwen-web-server.remotedatacenter" 10:53 20-Feb-18</span>
+        <div id="tab-left">
+            <div id="tab-left-container">
+                <span id="typewriter-left" class="typewriter"></span>
+                <span class="caret">&nbsp;</span>
+            </div>
+        </div>
+        <div id="tab-right">
+            <div id="tab-right-container">
+                <span id="typewriter-right" class="typewriter"></span>
+                <span class="caret">&nbsp;</span>
+            </div>
+        </div>
+        <div id="tab-bottom" style='background:#859900;'>
+            <span style="float:left;margin-left:10px;">[web-portfolio_0:bash*</span>
+            <span style="float:right;margin-right:10px;">"meliurwen-web-server.remotedatacenter" 10:53 20-Feb-18</span>
         </div>
     </div>
 </div>
