@@ -156,7 +156,7 @@ span.caret {
 .terminal a {
     font-family:courier,fixed;
     font-size: 13px;
-    color:#fff;
+    color:#dbdbdb;
 }
 
 /*Base Mobile Layout*/
@@ -165,7 +165,7 @@ span.caret {
     margin: 2vh auto;
     font-family:courier,fixed;
     font-size: 13px;
-    color:#fff;
+    color: #dbdbdb;
 
     border: 1px solid black;
     border-radius: 6px;
@@ -177,6 +177,15 @@ span.caret {
 
 #titlebar, #navbar {
     background: #33373a;
+    overflow: hidden;
+}
+
+#titlebar {
+    height: 33px;
+}
+
+#navbar {
+    height: 30px;
 }
 
 #tab-left, #tab-right, #tab-bottom, #titlebar, #navbar {
@@ -184,6 +193,9 @@ span.caret {
     float: left;
 }
 
+#tab-bottom {
+    background: #859900;
+}
 
 #tab-left-container {
     height:100%;
@@ -204,29 +216,21 @@ span.caret {
     }
 
     #titlebar {
-        width: 100%;
         float: top;
-        height: 33px;
-        overflow: hidden;
     }
 
     #navbar {
-        width: 100%;
         float: top;
-        height: 30px;
-        overflow: hidden;
     }
 
     #tab-left {
         width: 50%;
-        float: left;
         height: 80vh;
         overflow: auto;
     }
 
     #tab-right {
         width: 50%;
-        float: left;
         height: 80vh;
         overflow: auto;
     }
@@ -300,6 +304,16 @@ img.pixelated {
     background-image: url("../img/ghost-tile.gif");
     background-repeat: repeat;
     min-height:100vh;
+}
+
+
+.login-session {
+    font-weight: bold;
+    color: #859900;
+}
+
+.tilde {
+    color: #0085e3;
 }
 
 

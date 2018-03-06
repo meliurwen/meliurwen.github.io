@@ -6,6 +6,7 @@
     <meta name="robots" content="index,follow">
 
     <title>Meliurwen's Personal Page</title>
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/theme.css">
     <script type="text/javascript" src="js/typewriter-bundle.min.js"></script>
 </head>
@@ -27,7 +28,7 @@
 </div>
 
 <div id="box-1" class="tab-center" style="position: absolute; z-index: -5;width:100%; opacity: 0;">
-    <div class="terminal">
+    <div id="terminal-1" class="terminal">
         <div id="titlebar">
             <div style="width:33.33%;float:left;">
                 <div  class="tab-center" style="height:33px;width:33px;float:left;color:#b3b3b3;">
@@ -69,20 +70,10 @@
             </div>
         </div>
         <div id="tab-left">
-            <div id="tab-left-container">
+            <div id="tab-left-container" style="border-style:hidden;">
                 <span id="typewriter-left" class="typewriter"></span>
                 <span class="caret">&nbsp;</span>
             </div>
-        </div>
-        <div id="tab-right">
-            <div id="tab-right-container">
-                <span id="typewriter-right" class="typewriter"></span>
-                <span class="caret">&nbsp;</span>
-            </div>
-        </div>
-        <div id="tab-bottom" style='background:#859900;'>
-            <span style="float:left;margin-left:10px;">[web-portfolio_0:bash*</span>
-            <span style="float:right;margin-right:10px;">"meliurwen-web-server.remotedatacenter" 10:53 20-Feb-18</span>
         </div>
     </div>
 </div>
@@ -202,18 +193,13 @@
 function writeStuff() {
     var typewriter = require('typewriter');
 
-    var twSpanLeft = document.getElementById('typewriter-left');
-    var twSpanRight = document.getElementById('typewriter-right');
+    twSpanLeft = document.getElementById('typewriter-left');
 
-    var twLeft = typewriter(twSpanLeft).withAccuracy(95)
-                                    .withMinimumSpeed(5)
-                                    .withMaximumSpeed(17)
+    twLeft = typewriter(twSpanLeft).withAccuracy(95)
+                                    .withMinimumSpeed(35)
+                                    .withMaximumSpeed(50)
                                     .build();
 
-    var twRight = typewriter(twSpanRight).withAccuracy(95)
-                                    .withMinimumSpeed(5)
-                                    .withMaximumSpeed(17)
-                                    .build();
 
   twLeft.put('elementary OS Loki meliurwen-web-server tty1<br>\
 meliurwen-web-server login: ')
@@ -230,25 +216,55 @@ Welcome to elementary OS  Loki bla bla<br>\
 <br>\
 0 packages have to be updated<br>\
 0 security updates<br>\
-guest@meliurwen-web-server:~$ ')
+<span class="login-session">guest@meliurwen-web-server</span>:<span class="tilde">~</span>$ ')
     .waitRange(500, 1000)
     .type('tmux')
     .put('<br>', function () {document.getElementById('typewriter-left').innerHTML = "";
 
-  twRight.put('guest@meliurwen-web-server:~$ ')
-    .wait(1000)
+    //Generating tmux's interface
+    ///Right tab
+    tabRight = document.createElement("div");
+    tabRight.id = "tab-right";
+
+    tabRight.innerHTML ='\
+             <div id="tab-right-container">\
+                <span id="typewriter-right" class="typewriter"></span>\
+                <span class="caret">&nbsp;</span>\
+            </div>';
+
+    ///Footer
+    tabBottom = document.createElement("div");
+    tabBottom.id = "tab-bottom";
+
+    tabBottom.innerHTML = '\
+            <span style="float:left;margin-left:10px;">[web-portfolio_0:bash*</span>\
+            <span style="float:right;margin-right:10px;">"meliurwen-web-server.remotedatacenter" 10:53 20-Feb-18</span>'
+
+    document.getElementById("tab-left-container").style = null;
+    document.getElementById("terminal-1").appendChild(tabRight);
+    document.getElementById("terminal-1").appendChild(tabBottom);
+    //End
+
+    twSpanRight = document.getElementById('typewriter-right');
+
+    twRight = typewriter(twSpanRight).withAccuracy(95)
+                                    .withMinimumSpeed(35)
+                                    .withMaximumSpeed(50)
+                                    .build();
+
+  twRight.put('guest@meliurwen-web-server:<span class="tilde">~</span>$ ')
+    .wait(700)
     .type('./menu.sh')
     .put('<br/>', function () {tabRight = document.getElementById('tab-right');tabRight.className = "tab-center";tabRight.innerHTML = "<div><img id='homeButton' class='pixelated' src='img/home.png' onclick='homeButtonPress();'><img id='propic' class='pixelated' src='img/propic.png'></div>";});
-
 });
 
-  twLeft.put('guest@meliurwen-web-server:~$ ')
-    .wait(3500)
+  twLeft.put('<span class="login-session">guest@meliurwen-web-server</span>:<span class="tilde">~</span>$ ')
+    .wait(2000)
     .type('ssh guest@192.168.1.1')
     .put('<br/>')
-    .waitRange(1000, 1500)
+    .waitRange(250, 500)
     .put("guest@192.168.1.1\'s password:<br />")
-    .waitRange(2000, 3500)
+    .waitRange(300, 700)
     .put('Linux 4.9.0-4-amd64 #1 SMP Debian 4.9.51-1 (2017-09-28) x86_64<br />')
 .put(' _    _      _<br />\
 | |  | |    | |<br />\
@@ -257,15 +273,15 @@ guest@meliurwen-web-server:~$ ')
 \\  /\\  /  __/ | (_| (_) | | | | | |  __/<br />\
  \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|<br />\
 Last login: Thu Feb 15 20:54:55 2018 from 192.168.1.2<br />')
-    .put('guest@192.168.1.1:~$ ')
-    .waitRange(100, 2000)
+    .put('<span class="login-session">guest@192.168.1.1</span>:<span class="tilde">~</span>$ ')
+    .waitRange(100, 800)
     .type('ls -a')
     .put('<br/>')
     .waitRange(250, 350)
     .put('.   ..   Documents   Pictures   www   .superSecretStuff')
     .put('<br />')
-    .put('guest@192.168.1.1:~$ ')
-    .wait(1500)
+    .put('<span class="login-session">guest@192.168.1.1</span>:<span class="tilde">~</span>$ ')
+    .wait(500)
     .type('ls -a D')
     .wait(300)
     .put('ocuments/')
@@ -273,36 +289,44 @@ Last login: Thu Feb 15 20:54:55 2018 from 192.168.1.2<br />')
     .waitRange(250, 350)
     .put('.   ..   portfolio.txt')
     .put('<br />')
-    .put('guest@192.168.1.1:~$ ')
-    .wait(2500)
-    .type('cat D')
+    .put('<span class="login-session">guest@192.168.1.1</span>:<span class="tilde">~</span>$ ')
+    .wait(1000)
+    .type('clear && figlet Portfolio && cat D')
     .put('ocuments/')
     .wait(600)
     .put('portfolio.txt')
     .put('<br />')
-    .wait(1000)
-    .put('Photo: ../Picutures/propic.png<br>\
-Name: Meliurwen N.<br>\
-Living in:  Milan, Italy<br>\
+    .wait(700, function () {document.getElementById('typewriter-left').innerHTML = "";})
+    .put(' ____            _    __       _ _<br />\
+|  _ \\ ___  _ __| |_ / _| ___ | (_) ___<br />\
+| |_) / _ \\| \'__| __| |_ / _ \\| | |/ _ \\<br />\
+|  __/ (_) | |  | |_|  _| (_) | | | (_) |<br />\
+|_|   \\___/|_|   \\__|_|  \\___/|_|_|\\___/<br />\
+<br />\
+Photo:             ../Picutures/propic.png<br>\
+Name:              Meliurwen N.<br>\
+Living in:         Milan, Italy<br>\
 Actual occupation: Student<br>\
-Fields of study: Computer Science (undergraduate)<br>\
-                 Industrial Engineer spec. in Metallurgy<br>\
 <br>\
-[Languages]<br>\
+<b>[Fields of study]</b><br>\
+Computer Science (undergraduate)<br>\
+Industrial Engineer spec. in Metallurgy<br>\
+<br>\
+<b>[Languages]</b><br>\
 Italian - native<br>\
 English - B2<br>\
 French  - B1<br>\
 Spanish - A2<br>\
 <br>\
-[Programming&Markup Languages]<br>\
+<b>[Programming&Markup Languages]</b><br>\
 Java, Python 3.X, PHP, Javascript, HTML, CSS, SQL, C, R<br>\
 <br>\
-[Contacts and Socials]<br>\
+<b>[Contacts and Socials]</b><br>\
 Email: meliurwen@gmail.com<br>\
 Github: <a href="https://github.com/meliurwen">github.com/meliurwen</a> (Projects)<br>\
 Steam: <a href="https://steamcommunity.com/id/meliurwen">steamcommunity.com/id/meliurwen</a> (gaming)')
     .put('<br />')
-    .put('guest@192.168.1.1:~$ ', function () {setTypingVar();});
+    .put('<span class="login-session">guest@192.168.1.1</span>:<span class="tilde">~</span>$ ', function () {setTypingVar();});
 }
 
 function setTypingVar(){
