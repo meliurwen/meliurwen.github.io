@@ -162,8 +162,9 @@ span.caret {
 /*Base Mobile Layout*/
 .terminal {
     width: 90%;
+    min-height:300px;
     margin: 2vh auto;
-    font-family:courier,fixed;
+    font-family: roboto mono,courier,fixed;
     font-size: 13px;
     color: #dbdbdb;
 
@@ -316,6 +317,10 @@ img.pixelated {
     color: #0085e3;
 }
 
+.directory {
+    font-weight: bold;
+    color: #0085e3;
+}
 
 
 @font-face {
