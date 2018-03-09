@@ -40,15 +40,8 @@ body {
 }
 
 
-article {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
 h1 {
+    margin:0px;
     letter-spacing: 3px;
     color: #fff;
     font-family: 'Brotherhood-Script', 'Jenna Sue', 'Latin Modern Mono';
@@ -56,7 +49,8 @@ h1 {
     font-size: 150px;
 }
 
-h1 span {
+#subtitle {
+    color: #fff;
     font-family: 'Wishing-Well', 'Daniel', 'Purisa';
     letter-spacing: 0;
     font-weight: 300;
@@ -64,16 +58,28 @@ h1 span {
     line-height: 24px;
 }
 
-h1 span a {
+#subtitle a {
     color: #fff;
 }
 
-#arrowDown {
-    position: absolute;
-    top: 15%;
-    width: 100%;
+article {
+    position:absolute;
+    height:100vh;
+    width:100%;
+}
+
+#titleContainer {
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
 }
+
+#gotoBox-1 {
+    width: 70px;
+    height: 70px;
+    border: 0px;
+}
+
 
 #tape {
     font-family: 'Purisa', 'Latin Modern Mono', 'Arial';
