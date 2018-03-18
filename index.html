@@ -36,7 +36,10 @@
             <br>
             <br>
             <br>
-            <img id="gotoBox-1"src="img/arrow_down.png" onclick="fade(10);"/></div>
+            <img class="gotoBox-1 flipH" src="img/portfolio_arrow.png"/>
+            <img class="gotoBox-1" src="img/portfolio.png" onclick="fade(10);"/>
+            <img class="gotoBox-1" src="img/portfolio_arrow.png"/>
+        </div>
     </article>
 
     <!--  Video is muted & autoplays  -->
@@ -91,7 +94,7 @@
         <div id="tab-left">
             <div id="tab-left-container" style="border-style:hidden;">
                 <span id="typewriter-left" class="typewriter"></span>
-                <span class="caret">&nbsp;</span>
+                <span id="tab-left-caret" class="caret">&nbsp;</span>
             </div>
         </div>
     </div>
@@ -333,17 +336,44 @@ Industrial Engineer spec. in Metallurgy<br>\
 <br>\
 <b>[Languages]</b><br>\
 Italian - native<br>\
-English - B2<br>\
-French  - B1<br>\
-Spanish - A2<br>\
+English - fluent<br>\
+French  - basic<br>\
 <br>\
 <b>[Programming&Markup Languages]</b><br>\
-Java, Python 3.X, PHP, Javascript, HTML, CSS, SQL, C, R<br>\
+Java, Python 3.X, PHP, Javascript, HTML, CSS, SQL, C, R,<br>\
+Assembly (MIPS32, C8051 and GB\'s Z80)<br>\
+<br>\
+<b>[Some Works]</b>\
+<ul style="list-style-type:disc">\
+<li><b>Social Feed Gram</b> Telegram bot built ground-up, manually\
+ handling all http methods, that allows users to receive feeds from\
+ mainstream social medias. Able to handle a large userbase, and\
+ to deliver an high volume of messages without hitting Telegram’s\
+API rate Limits.</li>\
+<li><b>Server Stats</b> Multiuser Telegram bot built ground-up manually\
+ handling all http methods, useful as a monitor tool for a\
+ remote small/medium size server, like a VPS; it doesn’t need root\
+ privileges to work.</li>\
+<li><b>System Stats</b> JSON API written in PHP exposing Linux system\
+ informations and an example frontend making use of them.</li>\
+<li><b>SE Shared GPS</b> Tool for Space Engineers videogame, useful to\
+ share and manage game GPS coordinates between team members.</li>\
+<li><b>embedded C8051</b> Embedded System’s course project with a\
+ 8-bit C8051F020-DK board connected via I2C protocol with a\
+ custom board mounting a backlit LCD display, an accelerometer\
+ and a thermometer.</li>\
+<li>...</li>\
+</ul>\
+<br>\
+<b>[Hobbies]</b><br>\
+Retroware (both hardware and sowftware) enthusiast, GB and GBC\
+ architecture admirer, pixelart, calligrapy and cartography lover,\
+space and and anything related fanatic, Linux user since 2006.<br>\
 <br>\
 <b>[Contacts and Socials]</b><br>\
-Email: meliurwen@gmail.com<br>\
+Email:  meliurwen at gmail dot com<br>\
 Github: <a href="https://github.com/meliurwen">github.com/meliurwen</a> (Projects)<br>\
-Steam: <a href="https://steamcommunity.com/id/meliurwen">steamcommunity.com/id/meliurwen</a> (gaming)')
+Steam:  <a href="https://steamcommunity.com/id/meliurwen">steamcommunity.com/id/meliurwen</a> (gaming)')
     .put('<br />')
     .put('<span class="login-session">guest@192.168.1.1</span>:<span class="tilde">~</span>$ ', function () {setTypingVar();});
 }
