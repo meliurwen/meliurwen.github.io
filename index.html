@@ -206,9 +206,9 @@
             homeButton.src = 'img/home.png';
             if (endedTyping) {
                 a = box1.innerHTML;
+                box2.innerHTML = b;
+                fade(10);
             }
-            box2.innerHTML = b;
-            fade(10);
         },250);
     }
 
@@ -234,7 +234,7 @@ meliurwen-web-server login: ')
     .put('Last login bla bla bla<br>\
 Welcome to elementary OS  Loki bla bla<br>\
 <br>\
-     * Website: https://meliurwen.tk<br>\
+     * Website: ' + window.location.href + '<br>\
 <br>\
 0 packages have to be updated<br>\
 0 security updates<br>\
@@ -258,9 +258,14 @@ Welcome to elementary OS  Loki bla bla<br>\
     tabBottom = document.createElement("div");
     tabBottom.id = "tab-bottom";
 
+    months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    today = new Date();
+    date = ('0' + today.getDate()).slice(-2) + '-' + months[today.getMonth()] + '-' + today.getFullYear().toString().substr(-2);
+    time = today.getHours() + ':' + today.getMinutes();
+
     tabBottom.innerHTML = '\
             <span style="float:left;margin-left:10px;">[web-portfolio_0:bash*</span>\
-            <span style="float:right;margin-right:10px;">"meliurwen-web-server.remotedatacenter" 10:53 20-Feb-18</span>'
+            <span style="float:right;margin-right:10px;">"meliurwen-web-server.remotedatacenter" ' + time + ' ' + date + '</span>'
 
     document.getElementById("tab-left-container").style = null;
     document.getElementById("terminal-1").appendChild(tabRight);
@@ -331,7 +336,8 @@ Living in:         Milan, Italy<br>\
 Actual occupation: Student<br>\
 <br>\
 <b>[Fields of study]</b><br>\
-Computer Science (undergraduate)<br>\
+Master Degree in Computer Science (ongoing)<br>\
+Bachelor Degree in Computer Science<br>\
 Industrial Engineer spec. in Metallurgy<br>\
 <br>\
 <b>[Languages]</b><br>\
@@ -368,7 +374,7 @@ API rate Limits.</li>\
 <b>[Hobbies]</b><br>\
 Retroware (both hardware and sowftware) enthusiast, GB and GBC\
  architecture admirer, pixelart, calligrapy and cartography lover,\
-space and and anything related fanatic, Linux user since 2006.<br>\
+space and and anything related fanatic, GNU/Linux user since 2006.<br>\
 <br>\
 <b>[Contacts and Socials]</b><br>\
 Email:  meliurwen at gmail dot com<br>\
