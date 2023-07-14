@@ -14,11 +14,11 @@
     <!-- Links Rich Previews for social media -->
     <meta property="og:title" content="Meliurwen's Personal Website">
     <meta property="og:description" content="Meliurwen's personal website, blog and portfolio.">
-    <meta property="og:image" content="https://meliurwen.tk/img/logo.png">
-    <meta property="og:url" content="https://meliurwen.tk/">
+    <meta property="og:image" content="https://meliurwen.dev/img/logo.png">
+    <meta property="og:url" content="https://meliurwen.dev/">
     <meta property="og:site_name" content="Meliurwen">
     <meta property="twitter:title" content="Meliurwen's Personal Website">
-    <meta property="twitter:image" content="https://meliurwen.tk/img/logo.png">
+    <meta property="twitter:image" content="https://meliurwen.dev/img/logo.png">
     <!--<meta property="twitter:site" content="@twitterAccountHere">-->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:description" content="Meliurwen's personal website, blog and portfolio.">
@@ -27,17 +27,20 @@
 </head>
 
 <body>
-<div id="box-2" style="postion: absolute; z-index: 10; opacity: 1">
+<div id="box-2" style="z-index: 10; opacity: 1">
     <!--  Content  -->
     <article class="tab-center">
         <div id="titleContainer">
             <h1>Meliurwen N.</h1>
-            <span id="subtitle">Available on <a href="https://github.com/meliurwen" target="_blank">Github</a>, coding for fun and uni projects.</span>
+            <span class="subtitle">
+                Constantly doing and breaking stuff, always learning and looking for hard challenges.<br>
+                Available on <a href="https://github.com/meliurwen" target="_blank">GitHub</a>, <a href="https://gitlab.com/meliurwen" target="_blank">GitLab</a>, and my <a href="https://git.meliurwen.dev/explore/repos" target="_blank">personal forge</a>.
+            </span>
             <br>
             <br>
             <br>
             <img class="gotoBox-1 flipH" src="img/portfolio_arrow.png"/>
-            <img class="gotoBox-1" src="img/portfolio.png" onclick="fade(10);"/>
+            <img class="gotoBox-1" id="portfolio" src="img/portfolio.png" onclick="fade(10);"/>
             <img class="gotoBox-1" src="img/portfolio_arrow.png"/>
         </div>
     </article>
@@ -223,7 +226,7 @@ function writeStuff() {
                                     .build();
 
 
-  twLeft.put('elementary OS Loki meliurwen-web-server tty1<br>\
+  twLeft.put('Debian Bookworm meliurwen-web-server tty1<br>\
 meliurwen-web-server login: ')
     .waitRange(500, 1000)
     .type('guest')
@@ -299,7 +302,7 @@ Welcome to elementary OS  Loki bla bla<br>\
 | |/\\| |/ _ \\ |/ __/ _ \\| \'_ ` _ \\ / _ \\<br />\
 \\  /\\  /  __/ | (_| (_) | | | | | |  __/<br />\
  \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|<br />\
-Last login: Thu Feb 15 20:54:55 2018 from 192.168.1.2<br />')
+Last login: Thu Feb 15 20:54:55 2023 from 192.168.1.2<br />')
     .put('<span class="login-session">guest@192.168.1.1</span>:<span class="tilde">~</span>$ ')
     .waitRange(100, 800)
     .type('ls -a')
@@ -333,10 +336,10 @@ Last login: Thu Feb 15 20:54:55 2018 from 192.168.1.2<br />')
 Photo:             ../Picutures/propic.png<br>\
 Name:              Meliurwen N.<br>\
 Living in:         Milan, Italy<br>\
-Actual occupation: Student<br>\
+Actual occupation: Network Engineer<br>\
 <br>\
 <b>[Fields of study]</b><br>\
-Master Degree in Computer Science (ongoing)<br>\
+Master Degree in Computer Science<br>\
 Bachelor Degree in Computer Science<br>\
 Industrial Engineer spec. in Metallurgy<br>\
 <br>\

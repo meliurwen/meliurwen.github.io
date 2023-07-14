@@ -47,9 +47,37 @@ h1 {
     font-family: 'Brotherhood-Script', 'Jenna Sue', 'Latin Modern Mono';
     font-weight: normal;
     font-size: 150px;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff, 0 0 20px #595959, 0 0 35px #595959, 0 0 40px #595959, 0 0 50px #595959, 0 0 75px #595959;
+    transition: text-shadow 1s;
 }
 
-#subtitle {
+h1:hover {
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #595959, 0 0 70px #595959, 0 0 80px #595959, 0 0 100px #595959, 0 0 150px #595959;
+}
+
+a {
+    transition: text-shadow 1s;
+}
+
+a:hover {
+    text-shadow: 0 0 10px #ff006c, 0 0 20px #ff006c, 0 0 30px #ff006c, 0 0 40px #ff417d, 0 0 70px #ff417d, 0 0 80px #ff417d, 0 0 100px #ff417d, 0 0 150px #ff417d;
+}
+
+.gotoBox-1 {
+  filter: drop-shadow(0 0 5px rgb(255, 255, 255));
+  transition: filter 1s;
+  transition: transform 0.7s ease-in-out;
+}
+
+
+#portfolio:hover {
+    filter: drop-shadow(0 0 5px #ff006c);
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform 0.5s ease-in-out;
+}
+
+.subtitle {
     color: #fff;
     font-family: 'Wishing-Well', 'Daniel', 'Purisa';
     letter-spacing: 0;
@@ -58,7 +86,7 @@ h1 {
     line-height: 24px;
 }
 
-#subtitle a {
+.subtitle a {
     color: #fff;
 }
 
@@ -302,6 +330,7 @@ img.pixelated {
 #homeButton.pixelated {
     width: 140px;
     height: 70px;
+    cursor: pointer;
 }
 
 #propic.pixelated {
